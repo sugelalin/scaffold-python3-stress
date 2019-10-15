@@ -4,12 +4,12 @@
 ## 压测工具介绍
 ### 总览
 - AB 压测工具
-- Navive 是原生Python3异步压测脚本
+- Native 是原生Python3异步压测脚本
 - Locust 是分布式压测工具
 - Siege 功能类似于ab wrk之类的工具，但它可以直接压测批量接口数据，无需安装插件。使用也很简单，只要把批量生成好的接口和数据放到数据文件中即可
 
 
-#### AB 压测工具
+#### 一、AB 压测工具
 1、介绍
 - AB压测工具是最常用的几种压测工具之一（wrk/jenkins等）
 - 使用场景：使用简单，方便 用于对静态页面或单一接口做性能压测
@@ -33,7 +33,7 @@ ab -c 100 -n 2000 -L urls.txt
 ab -c 100 -n 2000 -C "token=xxxxx" -L urls.txt
 ```
 
-#### Navive 压测脚本
+#### 二、Navive 压测脚本
 1、介绍
 - 本项目实现了post和get两种请求方式的接口压测demo，可通过修改参数满足高并发压测需求。
 - 使用 asyncio 创建协程，从asyncio模块中直接获取一个EventLoop的引用，然后把需要执行的协程扔到EventLoop中执行，从而实现异步IO（实现了TCP、UDP、SSL等协议），使用 aiohttp基于asyncio实现的HTTP请求。
@@ -52,13 +52,14 @@ processcount = 20
 threadcount = 1000
 ```
 
-#### Locust 压测脚本
+#### 三、Locust 压测脚本
 1、介绍  
 - locust是Python的开源性能测试框架
 - 使用场景：
 可编程，应用场景比较丰富。比如：a、持续施压情况下，测试目标机器性能和架构高可用性；b、模拟并压测，完整且复杂的业务场景，比如提交作业-判题-推送通知；获取商品信息-加入购物车-生成订单-支付；
 
-2、安装：  
+2、下载&安装：  
+
 2.1 安装Python3  
 
 安装依赖：
@@ -72,6 +73,7 @@ threadcount = 1000
 设置环境变量 PATH  
 
 2.2. 安装Locust  
+
 文档：https://docs.locust.io/en/stable/  
     
     python3 -m pip install locustio（推荐）  
@@ -95,7 +97,7 @@ UI界面:
 
     http://localhost:8089
 
-#### Siege 压测脚本
+#### 四、Siege 压测脚本
 1、介绍
 - 使用场景：
 siege功能类似于ab wrk之类的工具，但它可以直接压测批量接口数据，无需安装插件。使用也很简单，只要把批量生成好的接口和数据放到数据文件中即可
